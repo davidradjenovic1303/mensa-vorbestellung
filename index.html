@@ -1,0 +1,3440 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mensa | Hochschule Kempten</title>
+
+<style>
+
+/* =========================================
+   GRUNDLAYOUT
+========================================= */
+
+:root {
+    --bg: #080d12;
+    --bg2: #0d141b;
+    --card: #111a22;
+    --card-hover: #16222c;
+
+    --border: rgba(255,255,255,.08);
+
+    --text: #f1f5f7;
+    --muted: #8c9aa5;
+
+    --blue: #19b5e6;
+    --blue-dark: #087da3;
+    --blue-soft: rgba(25,181,230,.12);
+
+    --green: #34d399;
+    --green-soft: rgba(52,211,153,.12);
+
+    --red: #fb7185;
+    --red-soft: rgba(251,113,133,.10);
+
+    --shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 20% 0%,
+            rgba(25,181,230,.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(52,211,153,.06),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    padding: 32px 20px 75px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #07141d,
+            #0a1822 50%,
+            #071116
+        );
+
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    max-width: 900px;
+    margin: auto;
+}
+
+.topline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 38px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .7px;
+
+    color: #dcecf2;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 7px 11px;
+
+    border-radius: 30px;
+
+    background: rgba(52,211,153,.08);
+    border: 1px solid rgba(52,211,153,.15);
+
+    color: var(--green);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: var(--green);
+
+    box-shadow: 0 0 10px var(--green);
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.05;
+
+    letter-spacing: -1.5px;
+}
+
+.header-subtitle {
+    margin-top: 13px;
+
+    max-width: 570px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.header-badge {
+    display: inline-flex;
+
+    margin-top: 22px;
+    padding: 7px 11px;
+
+    border-radius: 8px;
+
+    background: var(--blue-soft);
+    border: 1px solid rgba(25,181,230,.15);
+
+    color: #6ddcff;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+    max-width: 900px;
+
+    margin: -40px auto 70px;
+
+    padding: 0 16px;
+
+    position: relative;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card {
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.035),
+            rgba(255,255,255,.012)
+        ),
+        var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    margin-bottom: 14px;
+
+    box-shadow: var(--shadow);
+
+    backdrop-filter: blur(12px);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.section-number {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: var(--blue-soft);
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 900;
+}
+
+h2 {
+    margin: 0;
+
+    font-size: 17px;
+    letter-spacing: -.3px;
+}
+
+.subtitle {
+    margin: 7px 0 18px 39px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.field label {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #cbd6dc;
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+
+    width: 100%;
+    height: 42px;
+
+    padding: 0 12px;
+
+    background: #0b1218;
+
+    border: 1px solid var(--border);
+
+    border-radius: 9px;
+
+    color: var(--text);
+
+    font-family: inherit;
+    font-size: 13px;
+
+    transition: .2s;
+}
+
+input::placeholder {
+    color: #56656f;
+}
+
+input:focus,
+select:focus {
+
+    outline: none;
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(25,181,230,.09);
+
+}
+
+
+/* =========================================
+   WEEK
+========================================= */
+
+.week {
+    display: grid;
+    gap: 9px;
+}
+
+.day {
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.015);
+
+    transition: .2s;
+}
+
+.day:hover {
+    border-color: rgba(255,255,255,.14);
+}
+
+.day.active {
+
+    border-color:
+        rgba(25,181,230,.45);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.2);
+}
+
+
+/* =========================================
+   DAY HEADER
+========================================= */
+
+.day-header {
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 14px 15px;
+
+    cursor: pointer;
+}
+
+.day-main {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.day-checkbox {
+
+    appearance: none;
+
+    width: 19px;
+    height: 19px;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    border: 1px solid #45545f;
+
+    background: #0b1218;
+
+    cursor: pointer;
+
+    position: relative;
+
+    transition: .2s;
+}
+
+.day-checkbox:checked {
+
+    background: var(--blue);
+
+    border-color: var(--blue);
+
+    box-shadow:
+        0 0 12px rgba(25,181,230,.25);
+}
+
+.day-checkbox:checked::after {
+
+    content: "✓";
+
+    position: absolute;
+
+    color: #061117;
+
+    font-size: 12px;
+    font-weight: 900;
+
+    left: 4px;
+    top: 0px;
+}
+
+.day-name {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.date {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+.day-arrow {
+
+    color: #71818b;
+
+    font-size: 10px;
+
+    transition: .2s;
+}
+
+.day.active .day-arrow {
+    transform: rotate(180deg);
+    color: var(--blue);
+}
+
+
+/* =========================================
+   DAY CONTENT
+========================================= */
+
+.day-content {
+
+    display: none;
+
+    padding: 17px;
+
+    border-top: 1px solid var(--border);
+
+    background: rgba(0,0,0,.12);
+}
+
+.day.active .day-content {
+    display: block;
+}
+
+.menu-label,
+.extra-title,
+.time-row label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #71818b;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: .7px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   MENÜ
+========================================= */
+
+.menu-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+.menu-option {
+    position: relative;
+}
+
+.menu-option input {
+
+    position: absolute;
+
+    opacity: 0;
+}
+
+.menu-box {
+
+    display: block;
+
+    min-height: 105px;
+
+    padding: 13px;
+
+    background: #0b1218;
+
+    border: 1px solid var(--border);
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.menu-box:hover {
+
+    background: #101a22;
+
+    border-color:
+        rgba(255,255,255,.15);
+}
+
+.menu-option input:checked + .menu-box {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(25,181,230,.13),
+            rgba(25,181,230,.04)
+        );
+
+    border-color:
+        rgba(25,181,230,.65);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(25,181,230,.15);
+}
+
+.menu-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.menu-name {
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+.price {
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+.menu-description {
+
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+.badge {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 3px 7px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: .3px;
+}
+
+.vegan {
+
+    color: var(--green);
+
+    background: var(--green-soft);
+
+    border: 1px solid
+        rgba(52,211,153,.12);
+}
+
+.classic {
+
+    color: #9caeba;
+
+    background: rgba(156,174,186,.08);
+
+    border: 1px solid
+        rgba(156,174,186,.10);
+}
+
+
+/* =========================================
+   ZEIT
+========================================= */
+
+.time-row {
+    margin-top: 15px;
+}
+
+.time-row select {
+    background: #0b1218;
+}
+
+
+/* =========================================
+   EXTRAS
+========================================= */
+
+.extras {
+    margin-top: 15px;
+}
+
+.extra-list {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+.extra {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 9px;
+
+    background: #0b1218;
+
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+
+    color: #b7c4ca;
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.extra:hover {
+    border-color: rgba(255,255,255,.15);
+}
+
+.extra input {
+    accent-color: var(--blue);
+}
+
+.extra-price {
+    color: #657680;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+button {
+
+    border: none;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    font-weight: 800;
+
+    transition: .2s;
+}
+
+.add-button {
+
+    width: 100%;
+
+    height: 41px;
+
+    margin-top: 16px;
+
+    border-radius: 9px;
+
+    background: var(--blue-soft);
+
+    border: 1px solid
+        rgba(25,181,230,.18);
+
+    color: var(--blue);
+
+    font-size: 12px;
+}
+
+.add-button:hover {
+
+    background: rgba(25,181,230,.18);
+
+    border-color:
+        rgba(25,181,230,.35);
+}
+
+.secondary {
+
+    padding: 10px 13px;
+
+    border-radius: 9px;
+
+    background: #18232c;
+
+    border: 1px solid var(--border);
+
+    color: #c5d0d6;
+
+    font-size: 12px;
+}
+
+.secondary:hover {
+    background: #202d37;
+}
+
+
+/* =========================================
+   BESTELLUNG
+========================================= */
+
+.empty {
+
+    padding: 25px 10px;
+
+    text-align: center;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.empty-icon {
+
+    margin-bottom: 7px;
+
+    font-size: 23px;
+
+    opacity: .7;
+}
+
+.order {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px;
+
+    margin-bottom: 7px;
+
+    background: #0b1218;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+}
+
+.order-day {
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+.order-details {
+
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+.order-price {
+
+    color: var(--blue);
+
+    font-size: 12px;
+
+    font-weight: 900;
+
+    text-align: right;
+}
+
+.remove {
+
+    margin-top: 4px;
+
+    padding: 3px 0;
+
+    background: transparent;
+
+    color: var(--red);
+
+    font-size: 10px;
+}
+
+.total {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-top: 10px;
+
+    padding: 13px 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,181,230,.11),
+            rgba(25,181,230,.04)
+        );
+
+    border:
+        1px solid
+        rgba(25,181,230,.12);
+
+    border-radius: 10px;
+
+    color: #cdeaf2;
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+#grandTotal {
+    color: var(--blue);
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   ÜBERSICHT
+========================================= */
+
+#overview {
+    display: none;
+}
+
+.overview {
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+}
+
+.overview-head {
+
+    padding: 12px 14px;
+
+    background: #0b151d;
+
+    color: #d9e6eb;
+
+    font-size: 12px;
+
+    font-weight: 900;
+}
+
+.overview-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 12px 14px;
+
+    border-top:
+        1px solid var(--border);
+
+    font-size: 11px;
+}
+
+.overview-label {
+    color: var(--muted);
+}
+
+.overview-value {
+
+    color: #dce7eb;
+
+    font-weight: 700;
+
+    text-align: right;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   ABSCHICKEN
+========================================= */
+
+.submit {
+
+    width: 100%;
+
+    height: 50px;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0ea5d4,
+            #16b8df
+        );
+
+    color: #031018;
+
+    font-size: 13px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(25,181,230,.18);
+}
+
+.submit:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(25,181,230,.25);
+}
+
+
+/* =========================================
+   ERFOLG
+========================================= */
+
+#success {
+    display: none;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(52,211,153,.09),
+            rgba(52,211,153,.03)
+        );
+
+    border:
+        1px solid
+        rgba(52,211,153,.18);
+
+    color: #b9f4d6;
+}
+
+.success-title {
+
+    margin-bottom: 7px;
+
+    color: var(--green);
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+#successText {
+
+    color: #8fc7aa;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 650px) {
+
+    header {
+        padding: 25px 17px 65px;
+    }
+
+    .topline {
+        margin-bottom: 28px;
+    }
+
+    .status {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 31px;
+    }
+
+    .container {
+        padding: 0 11px;
+    }
+
+    .card {
+        padding: 16px;
+
+        border-radius: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-box {
+        min-height: auto;
+    }
+
+    .order {
+        align-items: flex-start;
+    }
+
+    .order-price {
+        display: none;
+    }
+
+    .overview-row {
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+    .overview-value {
+        text-align: left;
+    }
+}
+
+
+/* Modernes Mensa-Redesign */
+:root {
+  --bg: #f4f7f2;
+  --bg2: #edf3ec;
+  --card: #ffffff;
+  --card-hover: #f8fbf7;
+  --border: #e1e9df;
+  --text: #1d2b23;
+  --muted: #6b7b70;
+  --blue: #23734b;
+  --blue-dark: #185a39;
+  --blue-soft: rgba(35,115,75,.09);
+  --green: #23734b;
+  --green-soft: rgba(35,115,75,.09);
+  --red: #c94f5d;
+  --red-soft: rgba(201,79,93,.09);
+  --shadow: 0 10px 30px rgba(34, 58, 39, .07);
+}
+body {
+  background:
+    radial-gradient(circle at 8% 0%, rgba(174,211,164,.25), transparent 28%),
+    linear-gradient(180deg, #f8faf6 0%, var(--bg) 100%);
+  color: var(--text);
+}
+header {
+  background: linear-gradient(130deg, #183e2b 0%, #236442 58%, #38794d 100%);
+  border-bottom: 0;
+  padding-bottom: 82px;
+}
+.logo { color: #f2fff4; }
+.status {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.2);
+  color: #e4ffe9;
+}
+.status-dot { background: #a5f3b5; box-shadow: 0 0 10px rgba(165,243,181,.55); }
+.header-subtitle { color: #d1e5d5; }
+.header-badge {
+  color: #effff1;
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.18);
+}
+.card {
+  background: rgba(255,255,255,.96);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: none;
+}
+.section-number {
+  background: #e7f3e8;
+  color: #23734b;
+  border-radius: 9px;
+}
+h2 { color: #20382a; }
+input[type="text"], input[type="email"], select {
+  background: #fbfdf9;
+  border-color: #dce6dc;
+  color: var(--text);
+  border-radius: 11px;
+}
+/* Helles Auswahlfeld UND möglichst helles geöffnetes Zeitmenü */
+select {
+  color-scheme: only light;
+  appearance: auto;
+  -webkit-appearance: menulist;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #20382a !important;
+}
+select option,
+select optgroup {
+  color-scheme: light;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #20382a !important;
+}
+select option:checked {
+  background: #e7f3e8 !important;
+  background-color: #e7f3e8 !important;
+  color: #20382a !important;
+}
+input::placeholder { color: #9aa99c; }
+input:focus, select:focus {
+  border-color: #5b9d6b;
+  box-shadow: 0 0 0 3px rgba(35,115,75,.1);
+}
+.day {
+  background: #fcfefb;
+  border-color: #e4ebe2;
+  border-radius: 15px;
+}
+.day.active {
+  border-color: rgba(35,115,75,.45);
+  box-shadow: 0 8px 24px rgba(35,75,43,.08);
+}
+.day-header { padding: 16px; }
+.day-checkbox { background: white; border-color: #c7d5c7; }
+.day-checkbox:checked { background: var(--blue); border-color: var(--blue); box-shadow: none; }
+.day-checkbox:checked::after { color: white; }
+.day-content { background: #f8fbf7; border-top-color: #e6eee4; }
+.menu-box {
+  background: #fff;
+  border-color: #e1e9df;
+  border-radius: 14px;
+  min-height: 126px;
+}
+.menu-box:hover { background: #fbfef9; border-color: #b9d4bc; }
+.menu-option input:checked + .menu-box {
+  background: linear-gradient(145deg, #eff8ef, #fff);
+  border-color: #5c9c69;
+  box-shadow: 0 0 0 1px rgba(35,115,75,.12);
+}
+.price { color: #23734b; }
+.vegan { color: #23734b; background: #eaf6e9; border-color: #d9ecd8; }
+.classic { color: #627269; background: #f0f3ef; border-color: #e5eae3; }
+.extra { background: #fff; border-color: #e0e8de; border-radius: 10px; }
+.extra input { accent-color: #23734b; }
+.add-button {
+  background: #eaf5e9;
+  border-color: #d5e9d4;
+  color: #21653e;
+  border-radius: 11px;
+}
+.add-button:hover { background: #dff0dd; border-color: #b9dbba; }
+.secondary { background: #f3f7f1; border-color: #dfe8dc; color: #304b37; }
+.secondary:hover { background: #eaf2e7; }
+.order { background: #fbfdf9; border-color: #e2eae0; border-radius: 12px; }
+.order-price, #grandTotal { color: #23734b; }
+.total {
+  background: linear-gradient(135deg, #edf7eb, #f8fbf6);
+  border-color: #d9ead6;
+  color: #294c32;
+  border-radius: 12px;
+}
+.overview { border-color: #e0e8de; border-radius: 12px; }
+.overview-head { background: #edf5eb; color: #294c32; }
+.submit {
+  background: linear-gradient(135deg, #23734b, #348455);
+  color: #fff;
+  border-radius: 13px;
+  box-shadow: 0 8px 20px rgba(35,115,75,.17);
+}
+.submit:hover { box-shadow: 0 12px 26px rgba(35,115,75,.23); }
+#success {
+  background: linear-gradient(145deg, #eff9ee, #fff);
+  border-color: #d6ead4;
+  color: #244d30;
+}
+.success-title { color: #23734b; }
+#successText { color: #52745a; }
+.nutrition {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 10px;
+}
+.nutrition span {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: #f0f5ee;
+  color: #49614d;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.nutrition-note {
+  margin-top: 12px;
+  color: #7b897d;
+  font-size: 10px;
+  line-height: 1.5;
+}
+@media (max-width: 650px) {
+  header { padding-bottom: 70px; }
+  .card { border-radius: 17px; }
+  .menu-box { min-height: auto; }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+<div class="header-inner">
+
+    <div class="topline">
+
+        <div class="logo">
+            🎓 HOCHSCHULE KEMPTEN
+        </div>
+
+        <div class="status">
+
+            <span class="status-dot"></span>
+
+            Vorbestellung geöffnet
+
+        </div>
+
+    </div>
+
+
+    <h1>
+        Mensa-Vorbestellung
+    </h1>
+
+
+    <div class="header-subtitle">
+
+        Stelle dir deinen persönlichen
+        Essensplan für die Woche zusammen.
+        Wähle nur die Tage aus, an denen du
+        tatsächlich in der Mensa essen möchtest.
+
+    </div>
+
+
+    <div class="header-badge">
+
+        📅 Aktuelle Woche · Montag–Freitag
+
+    </div>
+
+</div>
+
+</header>
+
+
+
+<div class="container">
+
+
+<form id="orderForm">
+
+
+<!-- =========================================
+     DATEN
+========================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            01
+        </div>
+
+        <h2>
+            Deine Daten
+        </h2>
+
+    </div>
+
+
+    <p class="subtitle">
+        Für die Zuordnung deiner Vorbestellung.
+    </p>
+
+
+    <div class="form-grid">
+
+        <div class="field">
+
+            <label for="name">
+                NAME
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Vor- und Nachname">
+
+        </div>
+
+
+        <div class="field">
+
+            <label for="email">
+                HOCHSCHUL-E-MAIL
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="name@hs-kempten.de">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     ESSENSPLAN
+========================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            02
+        </div>
+
+        <h2>
+            Essensplan
+        </h2>
+
+    </div>
+
+
+    <p class="subtitle">
+        Wähle beliebig viele Tage aus – auch keinen.
+    </p>
+
+
+<div class="week">
+
+
+<!-- MONTAG -->
+
+<div class="day" id="day-montag">
+
+    <div
+        class="day-header"
+        onclick="toggleDay('montag')">
+
+        <div class="day-main">
+
+            <input
+                type="checkbox"
+                class="day-checkbox"
+                id="check-montag"
+                onclick="event.stopPropagation(); toggleDay('montag')">
+
+            <div>
+
+                <div class="day-name">
+                    Montag
+                </div>
+
+                <span
+                    class="date"
+                    id="date-montag">
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="day-arrow">
+            ▼
+        </div>
+
+    </div>
+
+
+    <div class="day-content">
+
+        <span class="menu-label">
+            Menü
+        </span>
+
+
+        <div class="menu-grid">
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-montag"
+                    value="Schnitzel mit Pommes"
+                    data-price="5.50">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Schnitzel mit Pommes
+                        </span>
+
+                        <span class="price">
+                            5,50 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Schnitzel, Pommes & Beilagensalat
+                    </span>
+
+                    <span class="badge classic">
+                        KLASSIK
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-montag"
+                    value="Gemüse-Curry"
+                    data-price="4.80">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Gemüse-Curry
+                        </span>
+
+                        <span class="price">
+                            4,80 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Gemüse-Curry mit Reis
+                    </span>
+
+                    <span class="badge vegan">
+                        🌱 VEGAN
+                    </span>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <label>
+                Abholzeit
+            </label>
+
+            <select id="time-montag">
+
+                <option value="">
+                    Zeit auswählen
+                </option>
+
+                <option>11:30 Uhr</option>
+                <option>12:00 Uhr</option>
+                <option>12:30 Uhr</option>
+                <option>13:00 Uhr</option>
+                <option>13:30 Uhr</option>
+                <option>14:00 Uhr</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="extras">
+
+            <div class="extra-title">
+                Extras
+            </div>
+
+            <div class="extra-list">
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="salad-montag">
+
+                    Beilagensalat
+
+                    <span class="extra-price">
+                        +1,00 €
+                    </span>
+                </label>
+
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="dessert-montag">
+
+                    Dessert
+
+                    <span class="extra-price">
+                        +1,20 €
+                    </span>
+                </label>
+
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="drink-montag">
+
+                    Getränk
+
+                    <span class="extra-price">
+                        +1,50 €
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addOrder('montag')">
+
+            ✓ Montag übernehmen
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- DIENSTAG -->
+
+<div class="day" id="day-dienstag">
+
+    <div
+        class="day-header"
+        onclick="toggleDay('dienstag')">
+
+        <div class="day-main">
+
+            <input
+                type="checkbox"
+                class="day-checkbox"
+                id="check-dienstag"
+                onclick="event.stopPropagation(); toggleDay('dienstag')">
+
+            <div>
+
+                <div class="day-name">
+                    Dienstag
+                </div>
+
+                <span
+                    class="date"
+                    id="date-dienstag">
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="day-arrow">
+            ▼
+        </div>
+
+    </div>
+
+
+    <div class="day-content">
+
+        <span class="menu-label">
+            Menü
+        </span>
+
+
+        <div class="menu-grid">
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-dienstag"
+                    value="Rindergeschnetzeltes"
+                    data-price="5.80">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Rindergeschnetzeltes
+                        </span>
+
+                        <span class="price">
+                            5,80 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Mit Spätzle und Gemüse
+                    </span>
+
+                    <span class="badge classic">
+                        KLASSIK
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-dienstag"
+                    value="Linsen-Dal"
+                    data-price="4.80">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Linsen-Dal
+                        </span>
+
+                        <span class="price">
+                            4,80 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Linsen-Dal mit Basmatireis
+                    </span>
+
+                    <span class="badge vegan">
+                        🌱 VEGAN
+                    </span>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <label>
+                Abholzeit
+            </label>
+
+            <select id="time-dienstag">
+
+                <option value="">
+                    Zeit auswählen
+                </option>
+
+                <option>11:30 Uhr</option>
+                <option>12:00 Uhr</option>
+                <option>12:30 Uhr</option>
+                <option>13:00 Uhr</option>
+                <option>13:30 Uhr</option>
+                <option>14:00 Uhr</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="extras">
+
+            <div class="extra-title">
+                Extras
+            </div>
+
+            <div class="extra-list">
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="salad-dienstag">
+                    Beilagensalat
+                    <span class="extra-price">
+                        +1,00 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="dessert-dienstag">
+                    Dessert
+                    <span class="extra-price">
+                        +1,20 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="drink-dienstag">
+                    Getränk
+                    <span class="extra-price">
+                        +1,50 €
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addOrder('dienstag')">
+
+            ✓ Dienstag übernehmen
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- MITTWOCH -->
+
+<div class="day" id="day-mittwoch">
+
+    <div
+        class="day-header"
+        onclick="toggleDay('mittwoch')">
+
+        <div class="day-main">
+
+            <input
+                type="checkbox"
+                class="day-checkbox"
+                id="check-mittwoch"
+                onclick="event.stopPropagation(); toggleDay('mittwoch')">
+
+            <div>
+
+                <div class="day-name">
+                    Mittwoch
+                </div>
+
+                <span
+                    class="date"
+                    id="date-mittwoch">
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="day-arrow">
+            ▼
+        </div>
+
+    </div>
+
+
+    <div class="day-content">
+
+        <span class="menu-label">
+            Menü
+        </span>
+
+
+        <div class="menu-grid">
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-mittwoch"
+                    value="Pasta Bolognese"
+                    data-price="5.00">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Pasta Bolognese
+                        </span>
+
+                        <span class="price">
+                            5,00 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Pasta mit Bolognese & Parmesan
+                    </span>
+
+                    <span class="badge classic">
+                        KLASSIK
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-mittwoch"
+                    value="Pasta Linsen-Sauce"
+                    data-price="4.80">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Pasta Linsen-Sauce
+                        </span>
+
+                        <span class="price">
+                            4,80 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Pasta mit Tomaten-Linsen-Sauce
+                    </span>
+
+                    <span class="badge vegan">
+                        🌱 VEGAN
+                    </span>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <label>
+                Abholzeit
+            </label>
+
+            <select id="time-mittwoch">
+
+                <option value="">
+                    Zeit auswählen
+                </option>
+
+                <option>11:30 Uhr</option>
+                <option>12:00 Uhr</option>
+                <option>12:30 Uhr</option>
+                <option>13:00 Uhr</option>
+                <option>13:30 Uhr</option>
+                <option>14:00 Uhr</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="extras">
+
+            <div class="extra-title">
+                Extras
+            </div>
+
+            <div class="extra-list">
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="salad-mittwoch">
+                    Beilagensalat
+                    <span class="extra-price">
+                        +1,00 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="dessert-mittwoch">
+                    Dessert
+                    <span class="extra-price">
+                        +1,20 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="drink-mittwoch">
+                    Getränk
+                    <span class="extra-price">
+                        +1,50 €
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addOrder('mittwoch')">
+
+            ✓ Mittwoch übernehmen
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- DONNERSTAG -->
+
+<div class="day" id="day-donnerstag">
+
+    <div
+        class="day-header"
+        onclick="toggleDay('donnerstag')">
+
+        <div class="day-main">
+
+            <input
+                type="checkbox"
+                class="day-checkbox"
+                id="check-donnerstag"
+                onclick="event.stopPropagation(); toggleDay('donnerstag')">
+
+            <div>
+
+                <div class="day-name">
+                    Donnerstag
+                </div>
+
+                <span
+                    class="date"
+                    id="date-donnerstag">
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="day-arrow">
+            ▼
+        </div>
+
+    </div>
+
+
+    <div class="day-content">
+
+        <span class="menu-label">
+            Menü
+        </span>
+
+
+        <div class="menu-grid">
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-donnerstag"
+                    value="Hähnchen-Geschnetzeltes"
+                    data-price="5.50">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Hähnchen-Geschnetzeltes
+                        </span>
+
+                        <span class="price">
+                            5,50 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Hähnchen mit Reis & Gemüse
+                    </span>
+
+                    <span class="badge classic">
+                        KLASSIK
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-donnerstag"
+                    value="Falafel-Bowl"
+                    data-price="4.90">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Falafel-Bowl
+                        </span>
+
+                        <span class="price">
+                            4,90 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Falafel, Reis, Salat & Hummus
+                    </span>
+
+                    <span class="badge vegan">
+                        🌱 VEGAN
+                    </span>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <label>
+                Abholzeit
+            </label>
+
+            <select id="time-donnerstag">
+
+                <option value="">
+                    Zeit auswählen
+                </option>
+
+                <option>11:30 Uhr</option>
+                <option>12:00 Uhr</option>
+                <option>12:30 Uhr</option>
+                <option>13:00 Uhr</option>
+                <option>13:30 Uhr</option>
+                <option>14:00 Uhr</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="extras">
+
+            <div class="extra-title">
+                Extras
+            </div>
+
+            <div class="extra-list">
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="salad-donnerstag">
+                    Beilagensalat
+                    <span class="extra-price">
+                        +1,00 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="dessert-donnerstag">
+                    Dessert
+                    <span class="extra-price">
+                        +1,20 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="drink-donnerstag">
+                    Getränk
+                    <span class="extra-price">
+                        +1,50 €
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addOrder('donnerstag')">
+
+            ✓ Donnerstag übernehmen
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- FREITAG -->
+
+<div class="day" id="day-freitag">
+
+    <div
+        class="day-header"
+        onclick="toggleDay('freitag')">
+
+        <div class="day-main">
+
+            <input
+                type="checkbox"
+                class="day-checkbox"
+                id="check-freitag"
+                onclick="event.stopPropagation(); toggleDay('freitag')">
+
+            <div>
+
+                <div class="day-name">
+                    Freitag
+                </div>
+
+                <span
+                    class="date"
+                    id="date-freitag">
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="day-arrow">
+            ▼
+        </div>
+
+    </div>
+
+
+    <div class="day-content">
+
+        <span class="menu-label">
+            Menü
+        </span>
+
+
+        <div class="menu-grid">
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-freitag"
+                    value="Fischfilet"
+                    data-price="5.70">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Fischfilet
+                        </span>
+
+                        <span class="price">
+                            5,70 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Fischfilet mit Kartoffeln & Gemüse
+                    </span>
+
+                    <span class="badge classic">
+                        KLASSIK
+                    </span>
+
+                </span>
+
+            </label>
+
+
+            <label class="menu-option">
+
+                <input
+                    type="radio"
+                    name="menu-freitag"
+                    value="Gemüse-Couscous"
+                    data-price="4.80">
+
+                <span class="menu-box">
+
+                    <span class="menu-top">
+
+                        <span class="menu-name">
+                            Gemüse-Couscous
+                        </span>
+
+                        <span class="price">
+                            4,80 €
+                        </span>
+
+                    </span>
+
+                    <span class="menu-description">
+                        Veganes Couscous mit Gemüse
+                    </span>
+
+                    <span class="badge vegan">
+                        🌱 VEGAN
+                    </span>
+
+                </span>
+
+            </label>
+
+        </div>
+
+
+        <div class="time-row">
+
+            <label>
+                Abholzeit
+            </label>
+
+            <select id="time-freitag">
+
+                <option value="">
+                    Zeit auswählen
+                </option>
+
+                <option>11:30 Uhr</option>
+                <option>12:00 Uhr</option>
+                <option>12:30 Uhr</option>
+                <option>13:00 Uhr</option>
+                <option>13:30 Uhr</option>
+                <option>14:00 Uhr</option>
+
+            </select>
+
+        </div>
+
+
+        <div class="extras">
+
+            <div class="extra-title">
+                Extras
+            </div>
+
+            <div class="extra-list">
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="salad-freitag">
+                    Beilagensalat
+                    <span class="extra-price">
+                        +1,00 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="dessert-freitag">
+                    Dessert
+                    <span class="extra-price">
+                        +1,20 €
+                    </span>
+                </label>
+
+                <label class="extra">
+                    <input
+                        type="checkbox"
+                        id="drink-freitag">
+                    Getränk
+                    <span class="extra-price">
+                        +1,50 €
+                    </span>
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="add-button"
+            onclick="addOrder('freitag')">
+
+            ✓ Freitag übernehmen
+
+        </button>
+
+    </div>
+
+</div>
+
+
+</div>
+</div>
+
+
+
+<!-- =========================================
+     BESTELLÜBERSICHT
+========================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            03
+        </div>
+
+        <h2>
+            Deine Bestellung
+        </h2>
+
+    </div>
+
+
+    <p class="subtitle">
+        Hier werden alle ausgewählten Tage gesammelt.
+    </p>
+
+
+    <div id="orderList">
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                🍽️
+            </div>
+
+            Noch keine Tage ausgewählt.
+
+        </div>
+
+    </div>
+
+
+    <div class="total">
+
+        <span>
+            Gesamtbetrag
+        </span>
+
+        <span id="grandTotal">
+            0,00 €
+        </span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     ÜBERSICHT
+========================================= -->
+
+<div class="card">
+
+    <div class="section-title">
+
+        <div class="section-number">
+            04
+        </div>
+
+        <h2>
+            Kontrolle
+        </h2>
+
+    </div>
+
+
+    <p class="subtitle">
+        Prüfe deine Bestellung vor dem Abschicken.
+    </p>
+
+
+    <button
+        type="button"
+        class="secondary"
+        onclick="showOverview()">
+
+        👁 Bestellung anzeigen
+
+    </button>
+
+</div>
+
+
+<div class="card" id="overview">
+
+    <div class="overview">
+
+        <div class="overview-head">
+            Bestellübersicht
+        </div>
+
+        <div class="overview-row">
+
+            <span class="overview-label">
+                Name
+            </span>
+
+            <span
+                class="overview-value"
+                id="overviewName">
+                —
+            </span>
+
+        </div>
+
+
+        <div class="overview-row">
+
+            <span class="overview-label">
+                E-Mail
+            </span>
+
+            <span
+                class="overview-value"
+                id="overviewEmail">
+                —
+            </span>
+
+        </div>
+
+
+        <div id="overviewOrders"></div>
+
+
+        <div class="overview-row">
+
+            <span class="overview-label">
+                Gesamt
+            </span>
+
+            <span
+                class="overview-value"
+                id="overviewTotal">
+                0,00 €
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     ABSCHICKEN
+========================================= -->
+
+<div class="card">
+
+    <button
+        type="submit"
+        class="submit">
+
+        ✓ Bestellung abschicken
+
+    </button>
+
+</div>
+
+
+</form>
+
+
+
+<!-- =========================================
+     ERFOLG
+========================================= -->
+
+<div
+    class="card"
+    id="success">
+
+    <div class="success-title">
+        ✓ Bestellung gespeichert
+    </div>
+
+    <div id="successText"></div>
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================
+   DATUM
+========================================= */
+
+function getMonday(date) {
+    // Lokales Datum verwenden, damit Zeitzonen keine Tagesverschiebung verursachen.
+    const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    const day = d.getDay();
+    const difference = day === 0 ? -6 : 1 - day;
+    d.setDate(d.getDate() + difference);
+    return d;
+}
+
+
+function formatDate(date) {
+
+    return date.toLocaleDateString(
+        "de-DE",
+        {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        }
+    );
+}
+
+
+function setDates() {
+    const monday = getMonday(new Date());
+    const days = ["montag", "dienstag", "mittwoch", "donnerstag", "freitag"];
+
+    days.forEach((day, index) => {
+        const date = new Date(monday);
+        date.setDate(monday.getDate() + index);
+        const dateElement = document.getElementById("date-" + day);
+        if (dateElement) dateElement.textContent = formatDate(date);
+    });
+
+    // Wochenhinweis im Kopf ebenfalls automatisch aktualisieren.
+    const badge = document.querySelector(".header-badge");
+    if (badge) {
+        const friday = new Date(monday);
+        friday.setDate(monday.getDate() + 4);
+        badge.textContent = "📅 Aktuelle Woche · " + formatDate(monday) + " – " + formatDate(friday);
+    }
+}
+
+// Beim Laden, beim Zurückkehren in den Tab und beim Wiederanzeigen aktualisieren.
+// So stimmen die Wochentage auch dann, wenn die Seite über Mitternacht geöffnet bleibt.
+setDates();
+window.addEventListener("focus", setDates);
+document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) setDates();
+});
+
+
+
+/* =========================================
+   BESTELLUNGEN
+========================================= */
+
+let orders = [];
+
+
+
+/* =========================================
+   TAG ÖFFNEN
+========================================= */
+
+function toggleDay(day) {
+
+    const card =
+        document.getElementById(
+            "day-" + day
+        );
+
+    const checkbox =
+        document.getElementById(
+            "check-" + day
+        );
+
+    checkbox.checked = true;
+
+    card.classList.toggle(
+        "active"
+    );
+}
+
+
+
+/* =========================================
+   BESTELLUNG HINZUFÜGEN
+========================================= */
+
+function addOrder(day) {
+
+    const menu =
+        document.querySelector(
+            'input[name="menu-' +
+            day +
+            '"]:checked'
+        );
+
+    const time =
+        document.getElementById(
+            "time-" + day
+        );
+
+
+    if (!menu) {
+
+        alert(
+            "Bitte wähle zuerst ein Menü aus."
+        );
+
+        return;
+    }
+
+
+    if (!time.value) {
+
+        alert(
+            "Bitte wähle eine Abholzeit aus."
+        );
+
+        return;
+    }
+
+
+    let price =
+        parseFloat(
+            menu.dataset.price
+        );
+
+
+    let extras = [];
+
+
+    const extraData = [
+
+        {
+            id: "salad-" + day,
+            name: "Beilagensalat",
+            price: 1
+        },
+
+        {
+            id: "dessert-" + day,
+            name: "Dessert",
+            price: 1.20
+        },
+
+        {
+            id: "drink-" + day,
+            name: "Getränk",
+            price: 1.50
+        }
+
+    ];
+
+
+    extraData.forEach(
+        extra => {
+
+            const element =
+                document.getElementById(
+                    extra.id
+                );
+
+            if (element.checked) {
+
+                price += extra.price;
+
+                extras.push(
+                    extra.name
+                );
+            }
+        }
+    );
+
+
+    const existing =
+        orders.find(
+            order =>
+                order.day === day
+        );
+
+
+    if (existing) {
+
+        existing.menu =
+            menu.value;
+
+        existing.time =
+            time.value;
+
+        existing.price =
+            price;
+
+        existing.extras =
+            extras;
+
+    } else {
+
+        orders.push({
+
+            day: day,
+
+            date:
+                document.getElementById(
+                    "date-" + day
+                ).textContent,
+
+            menu:
+                menu.value,
+
+            time:
+                time.value,
+
+            price:
+                price,
+
+            extras:
+                extras
+        });
+    }
+
+
+    updateOrders();
+
+
+    document.getElementById(
+        "day-" + day
+    ).classList.remove(
+        "active"
+    );
+
+
+    document.getElementById(
+        "check-" + day
+    ).checked = true;
+
+}
+
+
+
+/* =========================================
+   BESTELLUNG ANZEIGEN
+========================================= */
+
+function updateOrders() {
+
+    const list =
+        document.getElementById(
+            "orderList"
+        );
+
+
+    if (orders.length === 0) {
+
+        list.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    🍽️
+                </div>
+
+                Noch keine Tage ausgewählt.
+
+            </div>
+        `;
+
+    } else {
+
+        list.innerHTML = "";
+
+
+        orders.forEach(
+            (order, index) => {
+
+                const item =
+                    document.createElement(
+                        "div"
+                    );
+
+                item.className =
+                    "order";
+
+
+                item.innerHTML = `
+
+                    <div>
+
+                        <div class="order-day">
+
+                            ${capitalize(order.day)}
+                            · ${order.date}
+
+                        </div>
+
+                        <div class="order-details">
+
+                            ${order.menu}
+                            · ${order.time}
+
+                            ${
+                                order.extras.length
+                                ?
+                                "<br>Extras: " +
+                                order.extras.join(", ")
+                                :
+                                ""
+                            }
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="order-price">
+
+                            ${formatPrice(
+                                order.price
+                            )}
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="remove"
+                            onclick="removeOrder(${index})">
+
+                            Entfernen
+
+                        </button>
+
+                    </div>
+                `;
+
+
+                list.appendChild(
+                    item
+                );
+
+            }
+        );
+    }
+
+
+    updateTotal();
+}
+
+
+
+/* =========================================
+   BESTELLUNG ENTFERNEN
+========================================= */
+
+function removeOrder(index) {
+
+    const day =
+        orders[index].day;
+
+
+    orders.splice(
+        index,
+        1
+    );
+
+
+    document.getElementById(
+        "check-" + day
+    ).checked = false;
+
+
+    updateOrders();
+}
+
+
+
+/* =========================================
+   GESAMTPREIS
+========================================= */
+
+function updateTotal() {
+
+    let total = 0;
+
+
+    orders.forEach(
+        order => {
+
+            total +=
+                order.price;
+
+        }
+    );
+
+
+    document.getElementById(
+        "grandTotal"
+    ).textContent =
+        formatPrice(total);
+}
+
+
+
+/* =========================================
+   ÜBERSICHT
+========================================= */
+
+function showOverview() {
+
+    document.getElementById(
+        "overviewName"
+    ).textContent =
+        document.getElementById(
+            "name"
+        ).value ||
+        "Nicht angegeben";
+
+
+    document.getElementById(
+        "overviewEmail"
+    ).textContent =
+        document.getElementById(
+            "email"
+        ).value ||
+        "Nicht angegeben";
+
+
+    const overviewOrders =
+        document.getElementById(
+            "overviewOrders"
+        );
+
+
+    overviewOrders.innerHTML = "";
+
+
+    if (orders.length === 0) {
+
+        overviewOrders.innerHTML = `
+
+            <div class="overview-row">
+
+                <span class="overview-label">
+                    Bestellung
+                </span>
+
+                <span class="overview-value">
+                    Keine Bestellung
+                </span>
+
+            </div>
+        `;
+
+    } else {
+
+        orders.forEach(
+            order => {
+
+                const row =
+                    document.createElement(
+                        "div"
+                    );
+
+                row.className =
+                    "overview-row";
+
+
+                row.innerHTML = `
+
+                    <span class="overview-label">
+
+                        ${capitalize(order.day)}
+                        <br>
+                        ${order.date}
+
+                    </span>
+
+
+                    <span class="overview-value">
+
+                        ${order.menu}
+
+                        <br>
+
+                        Abholung:
+                        ${order.time}
+
+                        ${
+                            order.extras.length
+                            ?
+                            "<br>" +
+                            order.extras.join(", ")
+                            :
+                            ""
+                        }
+
+                        <br>
+
+                        ${formatPrice(
+                            order.price
+                        )}
+
+                    </span>
+                `;
+
+
+                overviewOrders.appendChild(
+                    row
+                );
+
+            }
+        );
+    }
+
+
+    document.getElementById(
+        "overviewTotal"
+    ).textContent =
+        formatPrice(
+            orders.reduce(
+                (sum, order) =>
+                    sum + order.price,
+                0
+            )
+        );
+
+
+    const overview =
+        document.getElementById(
+            "overview"
+        );
+
+
+    overview.style.display =
+        "block";
+
+
+    overview.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
+
+
+/* =========================================
+   ABSCHICKEN / GOOGLE SHEETS
+========================================= */
+
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbyJVZoV2gk3Bira4cSohUfNY8vQRHNvd3EnTBPJUFuugZIvq2Zs9htU9g0RK0E4OJqB/exec";
+
+document.getElementById(
+    "orderForm"
+).addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        const name =
+            document.getElementById(
+                "name"
+            ).value.trim();
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+        if (!name) {
+            alert("Bitte gib deinen Namen ein.");
+            return;
+        }
+
+        if (!email) {
+            alert("Bitte gib deine E-Mail-Adresse ein.");
+            return;
+        }
+
+        if (orders.length === 0) {
+
+            document.getElementById(
+                "successText"
+            ).innerHTML = `
+
+                <p>
+                    Für diese Woche wurde
+                    <strong>keine Bestellung</strong>
+                    aufgegeben.
+                </p>
+
+                <p>
+                    Du hast damit erfolgreich
+                    mitgeteilt, dass du diese Woche
+                    nicht in der Mensa essen möchtest.
+                </p>
+            `;
+
+            document.getElementById(
+                "success"
+            ).style.display = "block";
+
+            document.getElementById(
+                "success"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            return;
+        }
+
+        const total =
+            orders.reduce(
+                (sum, order) =>
+                    sum + Number(order.price || 0),
+                0
+            );
+
+        const data = {
+            name: name,
+            email: email,
+            orders: orders,
+            total: total
+        };
+
+        const submitButton =
+            document.querySelector(".submit");
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent =
+                "⏳ Bestellung wird gespeichert...";
+        }
+
+        try {
+
+            await fetch(
+                GOOGLE_SCRIPT_URL,
+                {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: {
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
+                    },
+                    body: JSON.stringify(data)
+                }
+            );
+
+            document.getElementById(
+                "successText"
+            ).innerHTML = `
+
+                <p>
+                    <strong>${name}</strong>,
+                    deine Bestellung wurde
+                    erfolgreich aufgenommen.
+                </p>
+
+                <p>
+                    Bestellte Tage:
+                    <strong>
+                        ${orders.length}
+                    </strong>
+
+                    <br>
+
+                    Gesamtbetrag:
+                    <strong>
+                        ${formatPrice(total)}
+                    </strong>
+                </p>
+            `;
+
+            document.getElementById(
+                "success"
+            ).style.display = "block";
+
+            document.getElementById(
+                "success"
+            ).scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        } catch (error) {
+
+            console.error(
+                "Fehler beim Speichern:",
+                error
+            );
+
+            alert(
+                "Die Bestellung konnte leider nicht gespeichert werden. Bitte versuche es erneut."
+            );
+
+        } finally {
+
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent =
+                    "✓ Bestellung abschicken";
+            }
+        }
+    }
+);
+
+
+/* =========================================
+   HILFSFUNKTIONEN
+========================================= */
+
+function formatPrice(price) {
+
+    return price
+        .toFixed(2)
+        .replace(".", ",") +
+        " €";
+}
+
+
+function capitalize(text) {
+
+    return text
+        .charAt(0)
+        .toUpperCase() +
+        text.slice(1);
+}
+
+
+/* Nährwerte: grobe Schätzwerte pro Portion, keine offiziellen Mensa-Angaben */
+const nutritionByMeal = {
+  "Schnitzel mit Pommes": {kcal: 780, protein: 32, carbs: 78, fat: 37},
+  "Gemüse-Curry": {kcal: 560, protein: 14, carbs: 86, fat: 17},
+  "Rindergeschnetzeltes": {kcal: 690, protein: 36, carbs: 72, fat: 24},
+  "Linsen-Dal": {kcal: 540, protein: 21, carbs: 82, fat: 12},
+  "Pasta Bolognese": {kcal: 650, protein: 29, carbs: 78, fat: 22},
+  "Pasta Linsen-Sauce": {kcal: 590, protein: 22, carbs: 88, fat: 14},
+  "Hähnchen-Geschnetzeltes": {kcal: 610, protein: 39, carbs: 68, fat: 15},
+  "Falafel-Bowl": {kcal: 620, protein: 19, carbs: 78, fat: 23},
+  "Fischfilet": {kcal: 570, protein: 32, carbs: 57, fat: 21},
+  "Gemüse-Couscous": {kcal: 520, protein: 14, carbs: 79, fat: 14}
+};
+
+document.querySelectorAll(".menu-option").forEach(option => {
+  const radio = option.querySelector('input[type="radio"]');
+  const values = nutritionByMeal[radio?.value];
+  if (!values) return;
+  const box = option.querySelector(".menu-box");
+  const nutrition = document.createElement("span");
+  nutrition.className = "nutrition";
+  nutrition.setAttribute("aria-label", "Geschätzte Nährwerte pro Portion");
+  nutrition.innerHTML = `
+    <span>${values.kcal} kcal</span>
+    <span>Eiweiß ${values.protein} g</span>
+    <span>Kohlenhydrate ${values.carbs} g</span>
+    <span>Fett ${values.fat} g</span>
+  `;
+  box.appendChild(nutrition);
+});
+
+const nutritionNote = document.createElement("p");
+nutritionNote.className = "nutrition-note";
+nutritionNote.textContent = "Nährwerte sind unverbindliche Schätzungen pro Portion auf Basis typischer Zutaten und Portionsgrößen. Tatsächliche Werte können je nach Rezeptur, Zubereitung und Beilagen abweichen. Für verbindliche Angaben bitte die Mensa fragen.";
+document.querySelector(".week")?.after(nutritionNote);
+
+</script>
+
+</body>
+</html
